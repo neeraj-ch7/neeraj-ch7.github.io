@@ -57,6 +57,48 @@
     color: #666;
   }
   span.accent { color: #2563EB; }
+
+  form {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #E0E0E0;
+  }
+  form h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  form label {
+    display: block;
+    font-size: 0.85rem;
+    color: #444;
+    margin-bottom: 0.3rem;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+  }
+  form textarea { min-height: 100px; resize: vertical; }
+  form button {
+    background: #2563EB;
+    color: #fff;
+    border: none;
+    padding: 0.65rem 1.4rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  form button:hover { background: #1d4ed8; }
+  #form-status {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+  }
+  #form-status.success { color: #16a34a; }
+  #form-status.error { color: #dc2626; }
 </style>
 </head>
 <body>
@@ -74,6 +116,53 @@
       <a href="tel:+917704870486">Call me</a>
     </div>
     <p class="contact">+91-7704870486</p>
+
+    <form id="contact-form">
+      <h2>Get in touch</h2>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send</button>
+      <p id="form-status"></p>
+    </form>
   </div>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.textContent = "Sending...";
+      status.className = "";
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch("https://formspree.io/f/xljewzye", {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          status.textContent = "Thanks — your message has been sent.";
+          status.className = "success";
+          form.reset();
+        } else {
+          status.textContent = "Something went wrong. Please try again.";
+          status.className = "error";
+        }
+      } catch (err) {
+        status.textContent = "Network error. Please try again.";
+        status.className = "error";
+      }
+    });
+  </script>
 </body>
 </html>
