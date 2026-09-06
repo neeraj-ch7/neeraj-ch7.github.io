@@ -3,26 +3,77 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Neeraj</title>
+<title>Neeraj Chauhan — Backend Engineer</title>
 <style>
+  * { box-sizing: border-box; }
   body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #FAFAFA;
     font-family: Inter, -apple-system, sans-serif;
     color: #1A1A1A;
+    padding: 2rem 1rem;
+  }
+  .card {
+    max-width: 560px;
+    width: 100%;
   }
   h1 {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 700;
+    margin-bottom: 0.25rem;
   }
-  span { color: #2563EB; }
+  .tagline {
+    font-size: 1.05rem;
+    color: #444;
+    margin-bottom: 1.75rem;
+    line-height: 1.5;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .links a {
+    text-decoration: none;
+    color: #1A1A1A;
+    border: 1px solid #1A1A1A;
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .links a:hover {
+    background: #2563EB;
+    border-color: #2563EB;
+    color: #fff;
+  }
+  .contact {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  span.accent { color: #2563EB; }
 </style>
 </head>
 <body>
-  <h1>Neeraj <span>— coming soon</span></h1>
+  <div class="card">
+    <h1>Neeraj Chauhan</h1>
+    <p class="tagline">
+      I build backend systems <span class="accent">that survive real load</span> —
+      APIs, databases, Docker, and auth, shipped with real tests, not just demos.
+      Case studies and project write-ups coming soon.
+    </p>
+    <div class="links">
+      <a href="https://github.com/neeraj-ch7" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/neeraj-ch7" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1SN_UiP3dWTNfx0XToZAU_Ew4RLa68OGl/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="tel:+917704870486">Call me</a>
+    </div>
+    <p class="contact">+91-7704870486</p>
+  </div>
 </body>
 </html>
